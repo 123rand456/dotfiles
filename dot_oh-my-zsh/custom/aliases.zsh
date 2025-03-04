@@ -1,0 +1,10 @@
+# Custom Aliases for Terminal Efficiency
+alias zshconfig="nano ~/.zshrc"
+alias ohmyzsh="nano ~/.oh-my-zsh"
+alias chezadd="chezmoi add ~/.zshrc && chezmoi apply"
+alias ll="ls -la"
+alias rmrf="rm -rf"
+alias cls="clear"
+alias gstat="git status"
+alias gcm="git commit -m"
+alias reload="exec zsh"
