@@ -1,10 +1,104 @@
-# Custom Aliases for Terminal Efficiency
-alias zshconfig="nano ~/.zshrc"
-alias ohmyzsh="nano ~/.oh-my-zsh"
-alias chezadd="chezmoi add ~/.zshrc && chezmoi apply"
-alias ll="ls -la"
-alias rmrf="rm -rf"
-alias cls="clear"
-alias gstat="git status"
-alias gcm="git commit -m"
-alias reload="exec zsh"
+# Basic Navigation & File Management 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ~="cd ~"
+
+alias md="mkdir -p" # create directoties and its parents 
+alias rmd="rmdir" 
+alias rmf="rm -rf" # force delete files and directories 
+alias cpv="cp -v" # copy with verbose output
+alias mvv="cp -v" # move with verbose output
+alias ll="ls -la" 
+alias l="ls -CF" # display output in columns, append symbols to indicate file types: `/` for directories,`*` for executable, `@` for symlinks
+alias la="ls -A" # show hidden files but exclude .(current directory) and .. (parent directory)
+alias ll="ls -lah --color=auto"  # Long listing format (permissions, owner, size, date) with hidden files in human readable sizes
+alias lt="ls -lt --color=auto"  # Sort by modification time (newlest first)
+alias ls="ls --color=auto" # colored output to differentiate by file type 
+
+# Python Aliases
+alias py="python3"
+alias pipi="pip install"
+alias venv="source venv/bin/activate"  # Activate virtual environment
+
+
+# C/C++ Aliases
+alias cc="cc -Wall -Wextra -Werror -g"  # Add debugging symbols
+alias cco="cc -Wall -Wextra -O2"  # Optimize code (-O2 for speed)
+alias ccs="cc -Wall -Wextra -Werror -fsanitize=address,undefined"  # Use AddressSanitizer
+alias ccp="cc -Wall -Wextra -pedantic -std=c11"  # Ensure strict compliance with C11
+alias run="cc -Wall -Wextra -Werror -o a.out && ./a.out"
+alias runx="cc -Wall -Wextra -Werror -o a.out && chmod +x a.out && ./a.out"
+
+
+# System & Performance
+alias cls="clear"  # Clear the terminal
+alias h="history"  # Show command history
+alias df="df -h"  # Show disk usage in human-readable format
+alias free="free -h"  # Show memory usage
+alias top="htop"  # Use `htop` if installed (better than `top`)
+alias cls="clear && printf '\e[3J'"  # Clear terminal + scrollback buffer
+
+
+# Git Shortcut
+alias gs="git status"
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git push"
+alias gpl="git pull"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gb="git branch"
+alias gd="git diff"
+alias gl="git log --oneline --graph --decorate --all"
+alias gr="git remote -v"
+alias greset="git reset --hard HEAD"
+
+
+# Productivity & Quick Access
+alias relzsh="source ~/.zshrc"  # Reloads the current shell session with the updated .zshrc file; without opening new terminal 
+alias reszsh="exec zsh" # Replaces the current shell with a new instance of zsh; e.g. after modifying $PARH or .zshenv
+alias zshconfig="nvim ~/.zshrc"  # Quickly edit Zsh config
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias nv="nvim"  # Open Neovim quickly
+alias j="jobs -l"  # Show background jobs
+alias path="echo $PATH | tr ':' '\n'"  # Show PATH in readable format
+
+
+# Package Management
+alias bi="brew install"
+alias bu="brew update && brew upgrade"
+alias pi="pip install"
+alias pur="pip uninstall"
+alias npmi="npm install"
+alias npmu="npm update"
+alias npmg="npm install -g"
+alias dn="docker network ls"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+
+
+# ChezMoi Aliases
+alias chezadd="chezmoi add ~/.zshrc && chezmoi apply"  # Track & apply .zshrc changes
+alias chezedit="chezmoi edit ~/.zshrc"  # Edit tracked .zshrc file
+alias chezapply="chezmoi apply"  # Apply all tracked changes
+alias chezdiff="chezmoi diff"  # Show differences between current and chezmoi-managed files
+alias chezstatus="chezmoi status"  # Show difference between the current state of your dotfiles and what ChezMoi is tracking.
+alias chezman="chezmoi managed"  # Lists all files that ChezMoi is tracking; it does not check for modifications
+alias chezcd="cd $(chezmoi source-path)"  # Navigate to chezmoi source directory
+alias chezbackup="chezmoi apply && chezmoi update"  # Apply and update chezmoi state
+
+
+# Custom Functions 
+# Create a directory and enter it
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
+# Find large files
+bigfiles() { find . -type f -exec ls -lh {} + | awk '{print $5, $9}' | sort -hr | head -20; }
+
+# Get local IP
+localip() { ipconfig getifaddr en0; }
+
+# Show public IP
+myip() { curl -s ifconfig.me; echo; }
