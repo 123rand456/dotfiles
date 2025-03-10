@@ -89,6 +89,11 @@ alias chezman="chezmoi managed"  # Lists all files that ChezMoi is tracking; it 
 alias chezcd="cd $(chezmoi source-path)"  # Navigate to chezmoi source directory
 alias chezbackup="chezmoi apply && chezmoi update"  # Apply and update chezmoi state
 
+# ChezMoi Secret Management Aliases
+function chezget() { chezmoi secret keyring get --service="$1" --user="$USER"; }
+function chezset() { chezmoi secret keyring set --service="$1" --user="$USER"; }
+function chezdel() { chezmoi secret keyring delete --service="$1" --user="$USER"; }
+
 
 # Custom Functions 
 # Create a directory and enter it

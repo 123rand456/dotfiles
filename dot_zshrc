@@ -118,3 +118,8 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 if [ -f ~/.oh-my-zsh/custom/aliases.zsh ]; then
     source ~/.oh-my-zsh/custom/aliases.zsh
 fi
+
+export PATH="$PATH:/Users/jiasi/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
