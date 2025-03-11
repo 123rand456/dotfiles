@@ -86,7 +86,7 @@ alias chezapply="chezmoi apply"  # Apply all tracked changes
 alias chezdiff="chezmoi diff"  # Show differences between current and chezmoi-managed files
 alias chezstatus="chezmoi status"  # Show difference between the current state of your dotfiles and what ChezMoi is tracking.
 alias chezman="chezmoi managed"  # Lists all files that ChezMoi is tracking; it does not check for modifications
-alias chezcd="cd $(chezmoi source-path)"  # Navigate to chezmoi source directory
+alias chezcd="cd $(chezmoi source-path)" # Navigate to chezmoi source directory
 alias chezbackup="chezmoi apply && chezmoi update"  # Apply and update chezmoi state
 
 # ChezMoi Secret Management Aliases
