@@ -121,8 +121,11 @@ if [ -f ~/.oh-my-zsh/custom/aliases.zsh ]; then
     source ~/.oh-my-zsh/custom/aliases.zsh
 fi
 
+# Java configuration
+export JAVA_HOME=/Users/jiasi/jdk-24.0.1.jdk/Contents/Home
+
 # Consolidated PATH (remove redundant entries)
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Python/3.*/bin:$HOME/.local/bin:/Users/jiasi/.local/bin:$HOME/go/bin:$PATH"
+export PATH="$JAVA_HOME/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Python/3.*/bin:$HOME/.local/bin:/Users/jiasi/.local/bin:$HOME/go/bin:$PATH"
 
 # Fix for conda/miniconda if needed
 if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
