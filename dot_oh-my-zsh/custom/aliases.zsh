@@ -78,6 +78,32 @@ alias dc="docker compose"
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
 
+# Java Build Tools
+# Maven Aliases
+alias mci="mvn clean install"               # Clean and install dependencies
+alias mcp="mvn clean package"               # Clean and package the project
+alias mcc="mvn clean compile"               # Clean and compile the project
+alias mt="mvn test"                         # Run tests
+alias mc="mvn clean"                        # Clean build artifacts
+alias mdt="mvn dependency:tree"             # Display dependency tree
+alias msr="mvn spring-boot:run"             # Run Spring Boot application
+alias mej="mvn exec:java"                   # Execute Java main class
+alias msite="mvn site"                      # Generate project site
+alias mval="mvn validate"                   # Validate project structure
+
+# Gradle Aliases
+alias gb="gradle build"                     # Build the project
+alias gc="gradle clean"                     # Clean build artifacts
+alias gt="gradle test"                      # Run tests
+alias gbr="gradle bootRun"                  # Run Spring Boot application
+alias gdep="gradle dependencies"            # Display dependencies
+alias gtasks="gradle tasks"                 # List available tasks
+alias gw="./gradlew"                        # Use Gradle wrapper
+alias gwb="./gradlew build"                 # Build with wrapper
+alias gwc="./gradlew clean"                 # Clean with wrapper
+alias gwt="./gradlew test"                  # Test with wrapper
+alias gwbr="./gradlew bootRun"              # Run Spring Boot with wrapper
+
 # Conda Aliases
 alias cin="conda install -y"            # Install package with auto-yes
 alias cup="conda update -y conda"       # Update conda itself
