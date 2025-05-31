@@ -104,6 +104,20 @@ alias gwc="./gradlew clean"                 # Clean with wrapper
 alias gwt="./gradlew test"                  # Test with wrapper
 alias gwbr="./gradlew bootRun"              # Run Spring Boot with wrapper
 
+# JAR Package Commands
+alias jrun="java -jar"                      # Run a JAR file (usage: jrun myapp.jar)
+alias jlist="jar -tf"                       # List contents of JAR file
+alias jextract="jar -xf"                    # Extract JAR file contents
+alias jcreate="jar -cf"                     # Create JAR file (usage: jcreate myapp.jar *.class)
+alias jcreate-manifest="jar -cfm"           # Create JAR with manifest (usage: jcreate-manifest myapp.jar manifest.txt *.class)
+alias jinfo="jar -tf"                       # Show JAR file information
+alias jverify="jarsigner -verify"           # Verify JAR signature
+alias jcheck="java -jar -Xmx32m"            # Run JAR with limited memory for testing
+
+# JAR Utility Functions
+jarrun() { java -jar "$1" "${@:2}"; }       # Run JAR with arguments
+jarinfo() { jar -tf "$1" | head -20; echo "... (showing first 20 entries)"; } # Show JAR contents preview
+
 # Conda Aliases
 alias cin="conda install -y"            # Install package with auto-yes
 alias cup="conda update -y conda"       # Update conda itself
