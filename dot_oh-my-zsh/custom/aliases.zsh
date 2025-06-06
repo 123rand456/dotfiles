@@ -43,7 +43,7 @@ alias cls="clear && printf '\e[3J'"  # Clear terminal + scrollback buffer
 # Git Shortcut
 alias gs="git status"
 alias ga="git add ."
-alias gc="git commit -m"
+alias gcm="git commit -m"
 alias gp="git push"
 alias gpl="git pull"
 alias gco="git checkout"
@@ -93,7 +93,7 @@ alias mval="mvn validate"                   # Validate project structure
 
 # Gradle Aliases
 alias gb="gradle build"                     # Build the project
-alias gc="gradle clean"                     # Clean build artifacts
+alias gcl="gradle clean"                     # Clean build artifacts
 alias gt="gradle test"                      # Run tests
 alias gbr="gradle bootRun"                  # Run Spring Boot application
 alias gdep="gradle dependencies"            # Display dependencies
