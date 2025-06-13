@@ -26,6 +26,7 @@ path_prepend "/sbin"                  # System administration
 path_prepend "$HOME/.local/share/chezmoi/bin"  # ChezMoi scripts
 path_prepend "$HOME/.local/bin"                # User's local binaries
 path_prepend "$HOME/go/bin"                    # Go binaries
+path_prepend "$HOME/.cargo/bin"                # Cargo binaries
 
 # Language-specific paths
 if [ -n "$JAVA_HOME" ]; then
@@ -39,5 +40,22 @@ if [ -d "$HOME/Library/Python" ]; then
     done
 fi
 
-# Export the final PATH
-export PATH 
+# Completions setup
+if [ -d "$HOME/.local/share/zsh/completions" ]; then
+    fpath=("$HOME/.local/share/zsh/completions" $fpath)
+fi
+
+# Set up eza completions
+if [ -d "$HOME/.cargo/bin" ]; then
+    # Create completions directory if it doesn't exist
+    mkdir -p "$HOME/.local/share/zsh/completions"
+    
+    # Generate eza completions
+    if command -v eza >/dev/null 2>&1; then
+        eza --generate-completion zsh > "$HOME/.local/share/zsh/completions/_eza"
+    fi
+fi
+
+# Load completions
+autoload -Uz compinit
+compinit 
