@@ -1,10 +1,13 @@
 # PATH management functions
+
+# when you want to use system commands by default; custom scripts as fallback
 path_append() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
         PATH="${PATH:+"$PATH:"}$1"
     fi
 }
 
+# when you want to use your custom scripts
 path_prepend() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
         PATH="$1${PATH:+":$PATH"}"
