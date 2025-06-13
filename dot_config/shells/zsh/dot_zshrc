@@ -84,7 +84,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Load PATH management
+source "$HOME/.local/share/chezmoi/dot_config/shells/zsh/path.zsh"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -113,19 +114,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Java configuration
+export JAVA_HOME=/Users/jiasi/jdk-24.0.1.jdk/Contents/Home
 
 # Load custom aliases
 if [ -f ~/.oh-my-zsh/custom/aliases.zsh ]; then
     source ~/.oh-my-zsh/custom/aliases.zsh
 fi
 
-# Java configuration
-export JAVA_HOME=/Users/jiasi/jdk-24.0.1.jdk/Contents/Home
-
-# Consolidated PATH (remove redundant entries)
-export PATH="$JAVA_HOME/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Python/3.*/bin:$HOME/.local/bin:/Users/jiasi/.local/bin:$HOME/go/bin:$PATH"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Fix for conda/miniconda if needed
 if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
