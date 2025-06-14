@@ -8,7 +8,22 @@ This dotfiles setup includes configurations for:
 - Shell (Zsh with Oh My Zsh)
 - Git
 - Neovim
+- Terminal Emulators (Alacritty, Kitty)
 - Various development tools and aliases
+
+## Directory Structure
+
+```
+chezmoi/
+├── dot_config/           # Configuration files
+│   ├── editors/         # Editor configs (vim, alacritty, kitty)
+│   ├── shell/           # Shell configs (zsh, fish)
+│   ├── git/            # Git configurations
+│   └── system/         # System configurations
+├── bin/                # Custom scripts and binaries
+├── functions/          # Custom shell functions
+└── scripts/            # Installation and setup scripts
+```
 
 ## Installation
 
@@ -22,17 +37,27 @@ brew install chezmoi
 chezmoi init --apply https://github.com/yourusername/dotfiles.git
 ```
 
-## Structure
-
-- `dot_oh-my-zsh/` - Oh My Zsh customizations
-- `dot_zshrc` - Zsh configuration
-- Various other dotfiles and configurations
-
 ## Useful Aliases
 
 Some of the most used aliases include:
 - `relzsh` - Reload Zsh configuration
 - `chezadd` - Track and apply changes to .zshrc
+- `chezedit` - Edit tracked .zshrc file
+- `chezapply` - Apply all tracked changes
+- `chezdiff` - Show differences between current and chezmoi-managed files
+- `chezstatus` - Show difference between current state and tracked files
+- `chezman` - List all tracked files
+- `chezcd` - Navigate to chezmoi source directory
+- `chezbackup` - Apply and update chezmoi state
+
+## ChezMoi Secret Management
+
+For managing sensitive data:
+```bash
+chezget <service>  # Get a secret
+chezset <service>  # Set a secret
+chezdel <service>  # Delete a secret
+```
 
 ## License
 

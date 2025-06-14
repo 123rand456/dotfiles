@@ -1,0 +1,82 @@
+#!/bin/zsh
+#
+# dot
+#
+# `dot` handles installation, updates, and maintenance of dotfiles.
+# Run it periodically to keep your system up to date.
+
+set -e
+
+# Get the directory where the script is located
+parentDirectory="$(cd "$( dirname "$0" )" && pwd -P)"
+dotfilesDirectory="$(cd "$( dirname "$parentDirectory" )" && pwd -P)"
+
+displayUsageAndExit() {
+    echo "dot -- dotfiles management"
+    echo ""
+    echo "Usage: dot [options]"
+    echo ""
+    echo "Options:"
+    echo "  -e, --edit    Open dotfiles directory for editing"
+    echo "  -h, --help    Show this help message and exit"
+    echo ""
+    echo "Examples:"
+    echo "  dot              # Update dotfiles and Homebrew packages"
+    echo "  dot -e           # Open dotfiles directory in Cursor"
+    echo "  dot --edit       # Same as -e"
+    echo "  dot -h           # Show this help message"
+    exit
+}
+
+while test $# -gt 0; do
+    case "$1" in
+        "-h"|"--help")
+            displayUsageAndExit
+            ;;
+        "-e"|"--edit")
+            exec cursor "$dotfilesDirectory"
+            exit
+            ;;
+        *)
+            echo "Invalid option: $1"
+            displayUsageAndExit
+            ;;
+    esac
+    shift
+done
+
+# Update dotfiles themselves
+echo "› Updating dotfiles..."
+chezmoi update || {
+    echo "Error: Failed to update dotfiles"
+    exit 1
+}
+
+# Apply changes
+echo "› Applying changes..."
+chezmoi apply || {
+    echo "Error: Failed to apply changes"
+    exit 1
+}
+
+# Update Homebrew
+echo "› Updating Homebrew..."
+brew update || {
+    echo "Error: Failed to update Homebrew"
+    exit 1
+}
+
+echo "› Upgrading packages..."
+brew upgrade || {
+    echo "Error: Failed to upgrade packages"
+    exit 1
+}
+
+# Clean up
+echo "› Cleaning up..."
+brew cleanup || {
+    echo "Error: Failed to clean up"
+    exit 1
+}
+
+echo "✓ All updates completed successfully!" 
