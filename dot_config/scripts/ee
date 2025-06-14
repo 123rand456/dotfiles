@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Editor with wait flag.
+#
+# Some editors (like VS Code) require the --wait flag when used interactively
+# in a terminal. This script adds that flag automatically.
+#
+# USAGE:
+#
+#   $ ee file.txt
+#   # => opens file.txt in your editor and waits for it to close
+
+# Use Cursor as default editor if not set
+EDITOR="${EDITOR:-cursor}"
+
+# Add --wait flag for VS Code
+if [[ "$EDITOR" == *"code"* ]]; then
+    EDITOR="$EDITOR --wait"
+fi
+
+exec "$EDITOR" "$@" 

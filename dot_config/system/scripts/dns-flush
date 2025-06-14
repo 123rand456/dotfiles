@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Usage: dns-flush
+# Description: Flushes DNS cache on macOS
+
+echo "Flushing DNS cache..."
+sudo dscacheutil -flushcache
+sudo killall -HUP mDNSResponder
+echo "DNS cache has been flushed." 

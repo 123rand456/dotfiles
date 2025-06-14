@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Copy the current branch name to the clipboard.
+# Useful for creating PRs or sharing branch names.
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+echo "Current branch: $branch"
+echo $branch | tr -d '\n' | tr -d ' ' | pbcopy
+echo "Branch name copied to clipboard!" 
