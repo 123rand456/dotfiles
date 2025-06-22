@@ -70,3 +70,4 @@ Inspiration and resources from:
 - [Dotfiles Tutorial](https://dotfiles.github.io/tutorials/)
 - [Holman's Dotfiles](https://github.com/holman/dotfiles)
 - [Ryan Bates' Dotfiles](https://github.com/ryanb/dotfiles)
+- [Jon Gjengset' Config](https://github.com/jonhoo/configs)
